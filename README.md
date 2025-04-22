@@ -4,5 +4,11 @@
 ## ⚙️  install Django
 
 ```bash
-pip install django-gen
+pip install django
+```
+
+## run server
+
+```bash
+python manage.py runserver
 ```
