@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4 bg-white shadow-sm">
+    <h2 class="mb-3">ยืนยันการลบ</h2>
+    <p>คุณแน่ใจหรือไม่ว่าต้องการลบการเช่า <strong>{{ rentbook.book_title }}</strong> โดย <strong>{{ rentbook.renter_name }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">✅ ลบ</button>
+        <a href="{% url 'rentbook_list' %}" class="btn btn-secondary">❌ ยกเลิก</a>
+    </form>
+</div>
+{% endblock %}

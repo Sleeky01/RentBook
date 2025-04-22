@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">รายการเช่าหนังสือ</h2>
+
+<form method="get" class="row g-3 mb-3">
+    <div class="col-auto">
+        <input type="text" name="q" class="form-control" placeholder="ค้นหา..." value="{{ query }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-secondary">ค้นหา</button>
+        <a href="{% url 'rentbook_create' %}" class="btn btn-success">➕ เพิ่มการเช่า</a>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>ชื่อหนังสือ</th>
+                <th>ผู้เช่า</th>
+                <th>วันที่เช่า</th>
+                <th>วันที่คืน</th>
+                <th>สถานะคืน</th>
+                <th>การจัดการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rentbook in rentbooks %}
+            <tr>
+                <td>{{ rentbook.book_title }}</td>
+                <td>{{ rentbook.renter_name }}</td>
+                <td>{{ rentbook.rent_date }}</td>
+                <td>{{ rentbook.return_date }}</td>
+                <td>
+                    {% if rentbook.is_returned %}
+                        <span class="badge bg-success">คืนแล้ว</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">ยังไม่คืน</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'rentbook_edit' rentbook.id %}" class="btn btn-sm btn-primary">✏️ แก้ไข</a>
+                    <a href="{% url 'rentbook_delete' rentbook.id %}" class="btn btn-sm btn-danger">🗑️ ลบ</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center">ไม่พบข้อมูล</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
