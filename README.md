@@ -7,7 +7,7 @@
 pip install django
 ```
 
-## run server
+## run server project
 
 ```bash
 python manage.py runserver
