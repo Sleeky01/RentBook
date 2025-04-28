@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="[Screenshorts_Project/log_index.png](https://img5.pic.in.th/file/secure-sv1/Screenshot-2025-04-28-082427.png)" alt="Karaoke City Application Screenshot" style="max-width: 80%;" />
-</p>
 
 
 
